@@ -26,7 +26,10 @@ data "aws_iam_policy_document" "assume_role_github" {
     condition {
       test     = "ForAnyValue:StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:ben-james-dodwell/backend-cv-benjamesdodwell-com:*"]
+      values = [
+        "repo:ben-james-dodwell/backend-cv-benjamesdodwell-com:*",
+        "repo:ben-james-dodwell/frontend-cv-benjamesdodwell-com:*",
+      ]
     }
   }
 }
