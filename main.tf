@@ -113,6 +113,7 @@ resource "aws_iam_role_policy" "terraform_policy" {
           "cloudfront:ListTagsForResource",
           "cloudfront:CreateDistribution",
           "cloudfront:TagResource",
+          "cloudfront:CreateInvalidation",
           "route53:ListHostedZones",
           "route53:GetChange"
         ],
