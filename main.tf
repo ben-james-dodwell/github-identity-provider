@@ -42,56 +42,65 @@ resource "aws_iam_role_policy" "terraform_policy" {
     "Version" : "2012-10-17",
     "Statement" : [
       {
-        "Sid" : "TerraformBackendS3",
-        "Effect" : "Allow",
         "Action" : [
           "s3:*"
         ],
-        "Resource" : "arn:aws:s3:::cv-benjamesdodwell-com-terraform/*/terraform.tfstate"
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:s3:::cv-benjamesdodwell-com-terraform/*/terraform.tfstate",
+        "Sid" : "TerraformBackendS3"
       },
       {
-        "Sid" : "TerraformBackendDynamoDB",
-        "Effect" : "Allow",
         "Action" : [
           "dynamodb:*"
         ],
-        "Resource" : "arn:aws:dynamodb:eu-west-2:231055119230:table/cv-benjamesdodwell-com-terraform"
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:dynamodb:eu-west-2:231055119230:table/cv-benjamesdodwell-com-terraform",
+        "Sid" : "TerraformBackendDynamoDB"
       },
       {
-        "Sid" : "DynamoDBActions",
-        "Effect" : "Allow",
         "Action" : [
           "dynamodb:*"
         ],
-        "Resource" : "arn:aws:dynamodb:eu-west-2:231055119230:table/Visits"
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:dynamodb:eu-west-2:231055119230:table/Visits",
+        "Sid" : "DynamoDBActions"
       },
       {
-        "Sid" : "IAMActions",
-        "Effect" : "Allow",
         "Action" : [
           "iam:*"
         ],
-        "Resource" : "arn:aws:iam::231055119230:role/LambdaAssumeRole"
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:iam::231055119230:role/LambdaAssumeRole",
+        "Sid" : "IAMActions"
       },
       {
-        "Sid" : "LambdaActions",
-        "Effect" : "Allow",
         "Action" : [
           "lambda:*"
         ],
-        "Resource" : "arn:aws:lambda:eu-west-2:231055119230:function:IncrementVisits"
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:lambda:eu-west-2:231055119230:function:IncrementVisits",
+        "Sid" : "LambdaActions"
       },
       {
-        "Sid" : "Route53Actions",
-        "Effect" : "Allow",
         "Action" : [
           "route53:*"
         ],
-        "Resource" : "arn:aws:route53:::hostedzone/Z0120439X7MX2MFD3KQR"
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:route53:::hostedzone/Z0120439X7MX2MFD3KQR",
+        "Sid" : "Route53Actions"
       },
       {
-        "Sid" : "TerraformActions",
+        "Action" : [
+          "s3:*"
+        ],
         "Effect" : "Allow",
+        "Resource" : [
+          "arn:aws:s3:::cv.benjamesdodwell.com/*",
+          "arn:aws:s3:::cv.benjamesdodwell.com"
+        ],
+        "Sid" : "S3Actions"
+      },
+      {
         "Action" : [
           "acm:DescribeCertificate",
           "acm:RequestCertificate",
@@ -100,10 +109,16 @@ resource "aws_iam_role_policy" "terraform_policy" {
           "apigateway:GET",
           "apigateway:POST",
           "apigateway:DELETE",
+          "cloudfront:GetDistribution",
+          "cloudfront:ListTagsForResource",
+          "cloudfront:CreateDistribution",
+          "cloudfront:TagResource",
           "route53:ListHostedZones",
           "route53:GetChange"
         ],
-        "Resource" : "*"
+        "Effect" : "Allow",
+        "Resource" : "*",
+        "Sid" : "TerraformActions"
       }
     ]
   })
