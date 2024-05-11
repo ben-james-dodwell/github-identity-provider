@@ -29,6 +29,7 @@ data "aws_iam_policy_document" "assume_role_github" {
       values = [
         "repo:ben-james-dodwell/backend-cv-benjamesdodwell-com:*",
         "repo:ben-james-dodwell/frontend-cv-benjamesdodwell-com:*",
+        "repo:ben-james-dodwell/blog-cv-benjamesdodwell-com:*",
       ]
     }
   }
