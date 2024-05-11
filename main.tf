@@ -97,7 +97,9 @@ resource "aws_iam_role_policy" "terraform_policy" {
         "Effect" : "Allow",
         "Resource" : [
           "arn:aws:s3:::cv.benjamesdodwell.com/*",
-          "arn:aws:s3:::cv.benjamesdodwell.com"
+          "arn:aws:s3:::cv.benjamesdodwell.com",
+          "arn:aws:s3:::blog.cv.benjamesdodwell.com/*",
+          "arn:aws:s3:::blog.cv.benjamesdodwell.com"
         ],
         "Sid" : "S3Actions"
       },
