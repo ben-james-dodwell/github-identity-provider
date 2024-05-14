@@ -47,7 +47,7 @@ resource "aws_iam_role_policy" "terraform_policy" {
           "s3:*"
         ],
         "Effect" : "Allow",
-        "Resource" : "arn:aws:s3:::${var.bucket}/${var.key}",
+        "Resource" : "arn:aws:s3:::${var.bucket}/*",
         "Sid" : "TerraformBackendS3"
       },
       {
