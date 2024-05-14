@@ -20,10 +20,10 @@ variable "region" {
 
 variable "frontend_bucket" {
   type    = string
-  default = "terraform-state"
+  default = "frontend-bucket"
 }
 
 variable "blog_bucket" {
   type    = string
-  default = "terraform-state"
+  default = "blog-bucket"
 }
