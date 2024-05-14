@@ -47,7 +47,7 @@ resource "aws_iam_role_policy" "terraform_policy" {
           "s3:*"
         ],
         "Effect" : "Allow",
-        "Resource" : "arn:aws:s3:::cv-benjamesdodwell-com-terraform/*/terraform.tfstate",
+        "Resource" : "arn:aws:s3:::${var.bucket}/${var.key}",
         "Sid" : "TerraformBackendS3"
       },
       {
@@ -55,7 +55,7 @@ resource "aws_iam_role_policy" "terraform_policy" {
           "dynamodb:*"
         ],
         "Effect" : "Allow",
-        "Resource" : "arn:aws:dynamodb:eu-west-2:231055119230:table/cv-benjamesdodwell-com-terraform",
+        "Resource" : "arn:aws:dynamodb:eu-west-2:231055119230:table/${var.dynamodb_table}",
         "Sid" : "TerraformBackendDynamoDB"
       },
       {
@@ -96,10 +96,10 @@ resource "aws_iam_role_policy" "terraform_policy" {
         ],
         "Effect" : "Allow",
         "Resource" : [
-          "arn:aws:s3:::cv.benjamesdodwell.com/*",
-          "arn:aws:s3:::cv.benjamesdodwell.com",
-          "arn:aws:s3:::blog.cv.benjamesdodwell.com/*",
-          "arn:aws:s3:::blog.cv.benjamesdodwell.com"
+          "arn:aws:s3:::${var.frontend_bucket}/*",
+          "arn:aws:s3:::${var.frontend_bucket}",
+          "arn:aws:s3:::${var.blog_bucket}/*",
+          "arn:aws:s3:::${var.blog_bucket}"
         ],
         "Sid" : "S3Actions"
       },
