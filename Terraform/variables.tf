@@ -27,3 +27,13 @@ variable "blog_bucket" {
   type    = string
   default = "blog-bucket"
 }
+
+variable "code_signing_bucket" {
+  type    = string
+  default = "code-signing-bucket"
+}
+
+variable "logging_bucket" {
+  type    = string
+  default = "logging-bucket"
+}
